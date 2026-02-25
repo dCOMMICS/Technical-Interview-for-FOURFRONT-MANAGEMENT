@@ -1,0 +1,270 @@
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #888;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+    }
+
+    /* ── Phone shell ── */
+    .phone-shell {
+      width: 100%;
+      max-width: 360px;
+      border-radius: 38px;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 1px #999,
+        0 0 0 12px #e0e0e0,
+        0 0 0 14px #bbb,
+        0 40px 80px rgba(0,0,0,0.4);
+      background: #fff;
+    }
+
+    /* ── Status bar ── */
+    .status-bar {
+      background: #2e2a1a;
+      padding: 10px 22px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .status-icons { display: flex; gap: 6px; align-items: center; }
+
+    /* ── Hero: dark olive-brown ── */
+    .hero-section {
+      background: #3a3418;
+      padding: 28px 20px 32px;
+      text-align: center;
+    }
+
+    .avatar-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid #b8962a;
+      padding: 3px;
+      margin: 0 auto 14px;
+      display: block;
+    }
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-tagline {
+      color: #c8bfa0;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    /* ── Stats section: same dark bg, flush with hero ── */
+    .stats-section {
+      background: #3a3418;
+      padding: 0 14px 20px;
+      margin-top: -1px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* salmon / rose-pink cards */
+    .stat-card {
+      background: #f0a090;
+      border-radius: 12px;
+      border: 2px solid #d47a68;
+      padding: 13px 12px 11px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      transition: filter 0.2s;
+    }
+    .stat-card:hover { filter: brightness(1.06); }
+
+    .stat-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+
+    .stat-info { flex: 1; min-width: 0; }
+    .stat-name {
+      font-size: 0.63rem;
+      color: #5a1800;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      color: #2a0c00;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-top: 2px;
+    }
+
+    /* ── Recommend section: off-white/cream ── */
+    .recommend-section {
+      background: #f0ece0;
+      padding: 18px 14px 20px;
+    }
+
+    .recommend-title {
+      color: #2a7a40;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 5px;
+    }
+
+    .recommend-orange {
+      color: #e07800;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      margin-bottom: 4px;
+    }
+
+    .recommend-grey {
+      color: #555;
+      font-size: 0.75rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    /* ── Membership cards ── */
+    .membership-card {
+      border-radius: 6px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* FOUNDATION header: golden yellow */
+    .membership-card.foundation .membership-header {
+      background: #c8a000;
+    }
+    /* ECONOMY header: dark slate */
+    .membership-card.economy .membership-header {
+      background: #5c6272;
+    }
+
+    .membership-header {
+      padding: 13px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .membership-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: #fff;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .membership-label strong {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+    }
+
+    .membership-chevron {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.65rem;
+      transition: transform 0.3s;
+    }
+    .membership-card.open .membership-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Body: hidden by default, shown when .open */
+    .membership-body {
+      background: #e8e4d8;
+      font-size: 0.74rem;
+      color: #444;
+      line-height: 1.65;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 16px;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .membership-card.open .membership-body {
+      max-height: 200px;
+      padding: 13px 16px;
+    }
+
+    /* ── More link: gold pill ── */
+    .more-link-wrap {
+      margin-top: 14px;
+      text-align: center;
+    }
+    .more-link {
+      display: inline-block;
+      background: #c8a000;
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 9px 22px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .more-link:hover { background: #a88200; color: #fff; }
+
+    /* ── Footer ── */
+    .app-footer {
+      background: #c8a000;
+      padding: 13px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.6rem;
+      color: #3a2800;
+      font-weight: 600;
+    }
+    .whatsapp-btn {
+      background: #2e2a1a;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+    .whatsapp-btn svg { width: 18px; height: 18px; fill: #c8a000; }
+
+    @media (min-width: 768px) {
+      body { align-items: center; }
+    }
